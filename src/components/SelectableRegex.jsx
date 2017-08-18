@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import './SelectableRegex.css';
 
 export default class SelectableRegex extends Component {
-  selectors() {
+  getSelectors() {
     const { tabsCount } = this.props;
     const list = [];
     for (var i = 0; i < tabsCount; i++) {
@@ -17,7 +17,7 @@ export default class SelectableRegex extends Component {
   }
 
   render() {
-    const selectors = this.selectors();
+    const selectors = this.getSelectors();
     return (
       <div className="selectable-regex">
         {selectors}
