@@ -9,13 +9,12 @@ export default class SelectableRegex extends Component {
     super(props);
     const items = [];
     for (var i = 0; i < this.props.tabsCount; i++) {
-      const item = { id: i, type: '[]', characters: '', meta: '' };
+      const item = { id: i, type: '[]', meta: '' };
       items.push(item);
     }
-    this.state = { items: items, text: '', regex: '' };
+    this.state = { items: items, regex: '' };
 
     this.handleSelectChange = this.handleSelectChange.bind(this);
-    this.handleInputChange = this.handleInputChange.bind(this);
     this.handleChangeRegex = this.handleChangeRegex.bind(this);
     this.getMetaCharacter = this.getMetaCharacter.bind(this);
   }
@@ -26,19 +25,6 @@ export default class SelectableRegex extends Component {
     this.setState((prevState) => {
       const newItem = Object.assign({}, prevState.items[index], {
         type: value
-      });
-      prevState.items[index] = newItem;
-      return { items: prevState.items };
-    });
-  }
-
-  handleInputChange(e) {
-    const index = e.target.id;
-    const value = e.target.value;
-    this.setState({ text: value });
-    this.setState((prevState) => {
-      const newItem = Object.assign({}, prevState.items[index], {
-        characters: value
       });
       prevState.items[index] = newItem;
       return { items: prevState.items };
@@ -107,7 +93,7 @@ SelectableRegex.propTypes = {
   items: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.numbser,
     type: PropTypes.string,
-    characters: PropTypes.string,
     meta: PropTypes.string
-  }))
+  })),
+  regex: PropTypes.string
 };
