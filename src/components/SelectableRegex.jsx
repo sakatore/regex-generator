@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import './SelectableRegex.css';
 import PlainText from './metas/PlainText.jsx';
 import AnyOne from './metas/AnyOne.jsx';
+import Anything from './metas/Anything.jsx';
 
 export default class SelectableRegex extends Component {
   constructor(props) {
@@ -61,6 +62,8 @@ export default class SelectableRegex extends Component {
       return (<PlainText id={id} onChangeedRegex={this.handleChangeRegex} />);
     case '[]':
       return (<AnyOne id={id} onChangeedRegex={this.handleChangeRegex} />);
+    case '.':
+      return (<Anything id={id} onChangeedRegex={this.handleChangeRegex} />);
     default:
       console.log('default');
     }

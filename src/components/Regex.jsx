@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import PropTypes from 'prop-types';
 import './Regex.css';
 import Result from './Result.jsx';
 import SelectableRegex from './SelectableRegex.jsx';
