@@ -2,13 +2,14 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import './SelectableRegex.css';
 import PlainText from './metas/PlainText.jsx';
+import AnyOne from './metas/AnyOne.jsx';
 
 export default class SelectableRegex extends Component {
   constructor(props) {
     super(props);
     const items = [];
     for (var i = 0; i < this.props.tabsCount; i++) {
-      const item = { id: i, type: 'Text', characters: '', meta: '' };
+      const item = { id: i, type: '[]', characters: '', meta: '' };
       items.push(item);
     }
     this.state = { items: items, text: '', regex: '' };
@@ -56,8 +57,13 @@ export default class SelectableRegex extends Component {
   }
 
   getCharacters(id) {
-    if (this.state.items[id].type === 'Text') {
+    switch (this.state.items[id].type) {
+    case 'Text':
       return (<PlainText id={id} onChangeedRegex={this.handleChangeRegex} />);
+    case '[]':
+      return (<AnyOne id={id} onChangeedRegex={this.handleChangeRegex} />);
+    default:
+      console.log('default');
     }
   }
 
