@@ -42,6 +42,7 @@ export default class AnyOne extends Component {
       regex: regex,
       exclusive: exclusive
     });
+    this.props.onChangeedRegex(e.target.id, regex);
   }
 
   render() {
@@ -60,7 +61,7 @@ export default class AnyOne extends Component {
           <option value="a-z0-9">A-Z0-9</option>
         </select>
         ^:
-        <input type="checkbox" onChange={this.onChangeCheckBox} />
+        <input id={this.props.id} type="checkbox" onChange={this.onChangeCheckBox} />
       </div>
     )
   }

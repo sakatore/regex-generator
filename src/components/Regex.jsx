@@ -8,15 +8,20 @@ export default class Regex extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      regex: '/^[a-z][0-9]$/',
+      regex: '',
     };
+    this.handleChangeRegex = this.handleChangeRegex.bind(this);
+  }
+
+  handleChangeRegex(regex) {
+    this.setState({ regex: regex });
   }
 
   render() {
     return (
       <div className="regex">
         <Result regex={this.state.regex} />
-        <SelectableRegex tabsCount={this.state.tabsCount} />
+        <SelectableRegex onChangeedRegex={this.handleChangeRegex} />
       </div>
     )
   }

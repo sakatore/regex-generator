@@ -28,15 +28,21 @@ export default class SelectableRegex extends Component {
     });
   }
 
-  handleChangeRegex(id, regex) {
+  handleChangeRegex(index, regex) {
     this.setState((prevState) => {
-      const newItem = Object.assign({}, prevState.items[id], {
+      const newItem = Object.assign({}, prevState.items[index], {
         meta: regex
       });
-      prevState.items[id] = newItem;
-      return { items: prevState.items };
+      prevState.items[index] = newItem;
+
+      const metas = prevState.items.map((item) => (
+        item.id === index ? regex : item.meta
+      ));
+      const newRegex = metas.join('');
+      this.props.onChangeedRegex(newRegex);
+
+      return { items: prevState.items, regex: newRegex };
     });
-    this.setState({ regex: regex });
   }
 
   handleClickAddButton() {
