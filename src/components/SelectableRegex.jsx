@@ -5,25 +5,45 @@ import './SelectableRegex.css';
 export default class SelectableRegex extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      type: ['[]'],
-      characters: ['']
-    };
+    const items = [];
+    for (var i = 0; i < this.props.tabsCount; i++) {
+      const item = { id: i, type: 'Text', characters: '' };
+      items.push(item);
+    }
+    this.state = { items: items, text: '' };
     this.handleSelectChange = this.handleSelectChange.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
     this.getCharacters = this.getCharacters.bind(this);
   }
 
   handleSelectChange(e) {
-    this.setState({type: e.target.value});
+    const index = e.target.id;
+    const value = e.target.value;
+    this.setState((prevState) => {
+      const newItem = Object.assign({}, prevState.items[index], {
+        type: value
+      });
+      prevState.items[index] = newItem;
+      return { items: prevState.items };
+    });
   }
 
   handleInputChange(e) {
-    this.setState({characters: e.target.value})
+    const index = e.target.id;
+    const value = e.target.value;
+    this.setState({text: value});
+    this.setState((prevState) => {
+      const newItem = Object.assign({}, prevState.items[index], {
+        characters: value
+      });
+      prevState.items[index] = newItem;
+      return { items: prevState.items };
+    });
   }
 
-  getCharacters() {
-    return (<input onChange={this.handleInputChange} value={this.state.text} />);
+  getCharacters(id) {
+    return (<input id={id}
+      onChange={this.handleInputChange} value={this.state.items[id].characters} />);
   }
 
   getSelectors() {
@@ -33,7 +53,7 @@ export default class SelectableRegex extends Component {
       list.push(
         <li>
           <div>
-            <select onChange={this.handleSelectChange}>
+            <select id={i} onChange={this.handleSelectChange}>
               <option value="Text">Text</option>
               <option value="[]">[]</option>
               <option value=".">.</option>
@@ -41,7 +61,7 @@ export default class SelectableRegex extends Component {
               <option value="$">$</option>
             </select>
           </div>
-          {this.getCharacters()}
+          {this.getCharacters(i)}
         </li>
       );
     }
@@ -63,6 +83,9 @@ export default class SelectableRegex extends Component {
 }
 
 SelectableRegex.propTypes = {
-  types: PropTypes.arrayOf(PropTypes.string),
-  characters: PropTypes.arrayOf(PropTypes.string)
+  items: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.numbser,
+    type: PropTypes.string,
+    characters: PropTypes.string
+  }))
 };
