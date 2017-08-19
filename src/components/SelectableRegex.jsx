@@ -17,15 +17,25 @@ export default class SelectableRegex extends Component {
     this.getMetaCharacter = this.getMetaCharacter.bind(this);
   }
 
+  combineRegex(index, regex, items) {
+    const metas = items.map((item) => (item.id === index ? regex : item.meta));
+    const newRegex = metas.join('');
+    this.props.onChangeedRegex(newRegex);
+    return newRegex;
+  }
+
   handleSelectChange(e) {
     const index = e.target.id;
-    const value = e.target.value;
+    const type = e.target.value;
     this.setState((prevState) => {
       const newItem = Object.assign({}, prevState.items[index], {
-        type: value
+        type: type,
+        meta: ''
       });
       prevState.items[index] = newItem;
-      return { items: prevState.items };
+
+      const newRegex = this.combineRegex(index, '', prevState.items);
+      return { items: prevState.items, regex: newRegex };
     });
   }
 
@@ -36,12 +46,7 @@ export default class SelectableRegex extends Component {
       });
       prevState.items[index] = newItem;
 
-      const metas = prevState.items.map((item) => (
-        item.id === index ? regex : item.meta
-      ));
-      const newRegex = metas.join('');
-      this.props.onChangeedRegex(newRegex);
-
+      const newRegex = this.combineRegex(index, regex, prevState.items);
       return { items: prevState.items, regex: newRegex };
     });
   }
@@ -70,20 +75,29 @@ export default class SelectableRegex extends Component {
   }
 
   getSelectors() {
-    const list = this.state.items.map((item) => (
+    const { items } = this.state;
+    const first = (index) => {
+      return index === 0 ? <option value="^">^</option> : null;
+    }
+    const last = (index) => {
+      return index === items.length - 1 ? <option value="$">$</option> : null;
+    }
+
+    const list = items.map((item) => (
       <li className="selectable-meta">
         <div>
           <select id={item.id} onChange={this.handleSelectChange}>
             <option value="Text">Text</option>
             <option value="[]">[]</option>
             <option value=".">.</option>
-            <option value="^">^</option>
-            <option value="$">$</option>
+            {first(item.id)}
+            {last(item.id)}
           </select>
         </div>
         {this.getMetaCharacter(item.id)}
       </li>
     ));
+
     return (
       <ul>
         {list}
