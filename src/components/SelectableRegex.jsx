@@ -17,7 +17,7 @@ export default class SelectableRegex extends Component {
     this.handleSelectChange = this.handleSelectChange.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleChangeRegex = this.handleChangeRegex.bind(this);
-    this.getCharacters = this.getCharacters.bind(this);
+    this.getMetaCharacter = this.getMetaCharacter.bind(this);
   }
 
   handleSelectChange(e) {
@@ -56,7 +56,7 @@ export default class SelectableRegex extends Component {
     this.setState({ regex: regex });
   }
 
-  getCharacters(id) {
+  getMetaCharacter(id) {
     switch (this.state.items[id].type) {
     case 'Text':
       return (<PlainText id={id} onChangeedRegex={this.handleChangeRegex} />);
@@ -82,7 +82,7 @@ export default class SelectableRegex extends Component {
               <option value="$">$</option>
             </select>
           </div>
-          {this.getCharacters(i)}
+          {this.getMetaCharacter(i)}
         </li>
       );
     }
