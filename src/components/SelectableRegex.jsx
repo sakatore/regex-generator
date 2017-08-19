@@ -6,8 +6,8 @@ export default class SelectableRegex extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      type: '[]',
-      characters: ''
+      type: ['[]'],
+      characters: ['']
     };
     this.handleSelectChange = this.handleSelectChange.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -63,5 +63,6 @@ export default class SelectableRegex extends Component {
 }
 
 SelectableRegex.propTypes = {
-  tabsCount: PropTypes.number
+  types: PropTypes.arrayOf(PropTypes.string),
+  characters: PropTypes.arrayOf(PropTypes.string)
 };
