@@ -1,3 +1,8 @@
 .selectable-regex {
   background-color: #eee0a3;
 }
+
+.selectable-meta {
+  margin-bottom: 20px;
+  list-style-type: none;
+}

@@ -7,15 +7,12 @@ import AnyOne from './metas/AnyOne.jsx';
 export default class SelectableRegex extends Component {
   constructor(props) {
     super(props);
-    const items = [];
-    for (var i = 0; i < this.props.tabsCount; i++) {
-      const item = { id: i, type: '[]', meta: '' };
-      items.push(item);
-    }
+    const items = [{ id: 0, type: 'Text', meta: '' }];
     this.state = { items: items, regex: '' };
 
     this.handleSelectChange = this.handleSelectChange.bind(this);
     this.handleChangeRegex = this.handleChangeRegex.bind(this);
+    this.handleClickAddButton = this.handleClickAddButton.bind(this);
     this.getMetaCharacter = this.getMetaCharacter.bind(this);
   }
 
@@ -42,6 +39,16 @@ export default class SelectableRegex extends Component {
     this.setState({ regex: regex });
   }
 
+  handleClickAddButton() {
+    const { items } = this.state;
+    const item = items[items.length - 1];
+    const id = item.id + 1;
+    const newItem = { id: id, type: 'Text', meta: '' };
+    this.setState((prevState) => ({
+      items: prevState.items.concat(newItem),
+    }));
+  }
+
   getMetaCharacter(id) {
     switch (this.state.items[id].type) {
     case 'Text':
@@ -54,24 +61,20 @@ export default class SelectableRegex extends Component {
   }
 
   getSelectors() {
-    const { tabsCount } = this.props;
-    const list = [];
-    for (var i = 0; i < tabsCount; i++) {
-      list.push(
-        <li>
-          <div>
-            <select id={i} onChange={this.handleSelectChange}>
-              <option value="Text">Text</option>
-              <option value="[]">[]</option>
-              <option value=".">.</option>
-              <option value="^">^</option>
-              <option value="$">$</option>
-            </select>
-          </div>
-          {this.getMetaCharacter(i)}
-        </li>
-      );
-    }
+    const list = this.state.items.map((item) => (
+      <li className="selectable-meta">
+        <div>
+          <select id={item.id} onChange={this.handleSelectChange}>
+            <option value="Text">Text</option>
+            <option value="[]">[]</option>
+            <option value=".">.</option>
+            <option value="^">^</option>
+            <option value="$">$</option>
+          </select>
+        </div>
+        {this.getMetaCharacter(item.id)}
+      </li>
+    ));
     return (
       <ul>
         {list}
@@ -84,6 +87,7 @@ export default class SelectableRegex extends Component {
     return (
       <div className="selectable-regex">
         {selectors}
+        <button onClick={this.handleClickAddButton}>Add Regex</button>
       </div>
     );
   }
