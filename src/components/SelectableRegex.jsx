@@ -5,6 +5,7 @@ import PlainText from './metas/PlainText.jsx';
 import AnyOne from './metas/AnyOne.jsx';
 import Anything from './metas/Anything.jsx';
 import Repeat from './metas/Repeat.jsx';
+import EitherWord from './metas/EitherWord.jsx';
 
 export default class SelectableRegex extends Component {
   constructor(props) {
@@ -74,6 +75,8 @@ export default class SelectableRegex extends Component {
       return (<Anything id={index} onChangedRegex={this.handleChangeRegex} />);
     case 'Repeat':
       return (<Repeat id={index} onChangedRegex={this.handleChangeRegex} />);
+    case '|':
+      return (<EitherWord id={index} onChangedRegex={this.handleChangeRegex} />);
     default:
       console.log('default');
     }
@@ -96,6 +99,7 @@ export default class SelectableRegex extends Component {
             <option value="[]">[]</option>
             <option value=".">.</option>
             <option value="Repeat">Repeat</option>
+            <option value="|">|</option>
             {first(item.id)}
             {last(item.id)}
           </select>
