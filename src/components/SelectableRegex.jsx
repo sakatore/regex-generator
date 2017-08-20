@@ -28,10 +28,11 @@ export default class SelectableRegex extends Component {
   handleSelectChange(e) {
     const index = e.target.id;
     const type = e.target.value;
+    const meta = (type === '^' || type === '$') ? type : '';
     this.setState((prevState) => {
       const newItem = Object.assign({}, prevState.items[index], {
         type: type,
-        meta: ''
+        meta: meta
       });
       prevState.items[index] = newItem;
 
