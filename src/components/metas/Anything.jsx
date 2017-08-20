@@ -19,7 +19,7 @@ export default class Anything extends Component {
       regex: regex,
       many: many
     });
-    this.props.onChangeedRegex(e.target.id, regex);
+    this.props.onChangedRegex(e.target.id, regex);
   }
 
   render() {

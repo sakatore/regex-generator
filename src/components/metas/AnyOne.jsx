@@ -22,7 +22,7 @@ export default class AnyOne extends Component {
       regex: regex,
       text: text,
     });
-    this.props.onChangeedRegex(e.target.id, regex);
+    this.props.onChangedRegex(e.target.id, regex);
   }
 
   handleSelectChange(e) {
@@ -32,7 +32,7 @@ export default class AnyOne extends Component {
       regex: regex,
       text: value
     });
-    this.props.onChangeedRegex(e.target.id, regex);
+    this.props.onChangedRegex(e.target.id, regex);
   }
 
   onChangeCheckBox(e) {
@@ -42,7 +42,7 @@ export default class AnyOne extends Component {
       regex: regex,
       exclusive: exclusive
     });
-    this.props.onChangeedRegex(e.target.id, regex);
+    this.props.onChangedRegex(e.target.id, regex);
   }
 
   render() {

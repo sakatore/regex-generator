@@ -20,7 +20,7 @@ export default class Regex extends Component {
     return (
       <div className="regex">
         <Result regex={this.state.regex} />
-        <SelectableRegex onChangeedRegex={this.handleChangeRegex} />
+        <SelectableRegex onChangedRegex={this.handleChangeRegex} />
       </div>
     )
   }

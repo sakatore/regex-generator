@@ -21,7 +21,7 @@ export default class SelectableRegex extends Component {
   combineRegex(index, regex, items) {
     const metas = items.map((item) => (item.id === index ? regex : item.meta));
     const newRegex = metas.join('');
-    this.props.onChangeedRegex(newRegex);
+    this.props.onChangedRegex(newRegex);
     return newRegex;
   }
 
@@ -65,13 +65,13 @@ export default class SelectableRegex extends Component {
   getMetaCharacter(id) {
     switch (this.state.items[id].type) {
     case 'Text':
-      return (<PlainText id={id} onChangeedRegex={this.handleChangeRegex} />);
+      return (<PlainText id={id} onChangedRegex={this.handleChangeRegex} />);
     case '[]':
-      return (<AnyOne id={id} onChangeedRegex={this.handleChangeRegex} />);
+      return (<AnyOne id={id} onChangedRegex={this.handleChangeRegex} />);
     case '.':
-      return (<Anything id={id} onChangeedRegex={this.handleChangeRegex} />);
+      return (<Anything id={id} onChangedRegex={this.handleChangeRegex} />);
     case 'Repeat':
-      return (<Repeat id={id} onChangeedRegex={this.handleChangeRegex} />);
+      return (<Repeat id={id} onChangedRegex={this.handleChangeRegex} />);
     default:
       console.log('default');
     }

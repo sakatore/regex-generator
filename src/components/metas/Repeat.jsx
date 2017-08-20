@@ -22,7 +22,7 @@ export default class Repeat extends Component {
       regex: regex,
       letter: letter
     });
-    this.props.onChangeedRegex(e.target.id, regex);
+    this.props.onChangedRegex(e.target.id, regex);
   }
 
   handleSelectChange(e) {
@@ -33,7 +33,7 @@ export default class Repeat extends Component {
       regex: regex,
       option: option
     });
-    this.props.onChangeedRegex(e.target.id, regex);
+    this.props.onChangedRegex(e.target.id, regex);
   }
 
   render() {

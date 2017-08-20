@@ -18,7 +18,7 @@ export default class PlainText extends Component {
       regex: text,
       text: text
     });
-    this.props.onChangeedRegex(e.target.id, text);
+    this.props.onChangedRegex(e.target.id, text);
   }
 
   render() {
