@@ -63,16 +63,17 @@ export default class SelectableRegex extends Component {
     }));
   }
 
-  getMetaCharacter(id) {
-    switch (this.state.items[id].type) {
+  getMetaCharacter(index) {
+    const { type }  = this.state.items[index];
+    switch (type) {
     case 'Text':
-      return (<PlainText id={id} onChangedRegex={this.handleChangeRegex} />);
+      return (<PlainText id={index} onChangedRegex={this.handleChangeRegex} />);
     case '[]':
-      return (<AnyOne id={id} onChangedRegex={this.handleChangeRegex} />);
+      return (<AnyOne id={index} onChangedRegex={this.handleChangeRegex} />);
     case '.':
-      return (<Anything id={id} onChangedRegex={this.handleChangeRegex} />);
+      return (<Anything id={index} onChangedRegex={this.handleChangeRegex} />);
     case 'Repeat':
-      return (<Repeat id={id} onChangedRegex={this.handleChangeRegex} />);
+      return (<Repeat id={index} onChangedRegex={this.handleChangeRegex} />);
     default:
       console.log('default');
     }
