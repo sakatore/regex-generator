@@ -22,7 +22,7 @@ export default class AnyOne extends Component {
       regex: regex,
       text: text,
     });
-    this.props.onChangedRegex(e.target.id, regex);
+    this.props.onChangedRegex(this.props.id, regex);
   }
 
   handleSelectChange(e) {
@@ -32,7 +32,7 @@ export default class AnyOne extends Component {
       regex: regex,
       text: value
     });
-    this.props.onChangedRegex(e.target.id, regex);
+    this.props.onChangedRegex(this.props.id, regex);
   }
 
   onChangeCheckBox(e) {
@@ -42,17 +42,17 @@ export default class AnyOne extends Component {
       regex: regex,
       exclusive: exclusive
     });
-    this.props.onChangedRegex(e.target.id, regex);
+    this.props.onChangedRegex(this.props.id, regex);
   }
 
   render() {
     return (
       <div className="any-one-character">
-        <input id={this.props.id}
+        <input
           onChange={this.handleChangeText} placeholder="any one character"
           value={this.state.text}
         />
-        <select id={this.props.id} onChange={this.handleSelectChange}>
+        <select onChange={this.handleSelectChange}>
           <option value="">custom</option>
           <option value="a-z">a-z</option>
           <option value="A-Z">A-Z</option>
@@ -61,7 +61,7 @@ export default class AnyOne extends Component {
           <option value="a-z0-9">A-Z0-9</option>
         </select>
         ^:
-        <input id={this.props.id} type="checkbox" onChange={this.onChangeCheckBox} />
+        <input type="checkbox" onChange={this.onChangeCheckBox} />
       </div>
     )
   }

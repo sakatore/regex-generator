@@ -19,15 +19,14 @@ export default class Anything extends Component {
       regex: regex,
       many: many
     });
-    this.props.onChangedRegex(e.target.id, regex);
+    this.props.onChangedRegex(this.props.id, regex);
   }
 
   render() {
     return (
-      <div className="plain-text">
+      <div className="anything-character">
         *:
-        <input id={this.props.id}
-          type="checkbox" onChange={this.onChangeCheckBox} />
+        <input type="checkbox" onChange={this.onChangeCheckBox} />
       </div>
     )
   }

@@ -18,14 +18,13 @@ export default class PlainText extends Component {
       regex: text,
       text: text
     });
-    this.props.onChangedRegex(e.target.id, text);
+    this.props.onChangedRegex(this.props.id, text);
   }
 
   render() {
     return (
       <div className="plain-text">
-        <input id={this.props.id}
-          onChange={this.handleChangeText} placeholder="plain text" />
+        <input onChange={this.handleChangeText} placeholder="plain text" />
       </div>
     )
   }
