@@ -15,7 +15,7 @@ export default class EitherWord extends Component {
 
   combineRegex(index, words) {
     const newRegex = words.length > 1
-      ? words.map((word) => word.text).filter((text) => text !== '').join('|')
+      ? words.map(word => word.text).filter(text => text !== '').join('|')
       : '';
     console.log(newRegex)
     this.props.onChangedRegex(this.props.id, newRegex);

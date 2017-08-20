@@ -20,7 +20,7 @@ export default class SelectableRegex extends Component {
   }
 
   combineRegex(index, regex, items) {
-    const metas = items.map((item) => (item.id === index ? regex : item.meta));
+    const metas = items.map(item => item.id === index ? regex : item.meta);
     const newRegex = metas.join('');
     this.props.onChangedRegex(newRegex);
     return newRegex;
@@ -91,7 +91,7 @@ export default class SelectableRegex extends Component {
       return index === items.length - 1 ? <option value="$">$</option> : null;
     }
 
-    const list = items.map((item) => (
+    const list = items.map(item => (
       <li className="selectable-meta">
         <div>
           <select id={item.id} onChange={this.handleSelectChange}>
