@@ -14,26 +14,26 @@ export default class Repeat extends Component {
     this.handleSelectChange = this.handleSelectChange.bind(this);
   }
 
-  handleChangeText(e) {
-    const letter = e.target.value;
-    const { option } = this.state;
+  changeRegex(id, letter, option) {
     const regex = letter.length !== 0 ? `${letter}${option}` : '';
     this.setState({
       regex: regex,
-      letter: letter
+      letter: letter,
+      option: option
     });
-    this.props.onChangedRegex(e.target.id, regex);
+    this.props.onChangedRegex(id, regex);
+  }
+
+  handleChangeText(e) {
+    const letter = e.target.value;
+    const { option } = this.state;
+    this.changeRegex(e.target.id, letter, option)
   }
 
   handleSelectChange(e) {
     const option = e.target.value;
     const { letter } = this.state;
-    const regex = letter.length !== 0 ? `${letter}${option}` : '';
-    this.setState({
-      regex: regex,
-      option: option
-    });
-    this.props.onChangedRegex(e.target.id, regex);
+    this.changeRegex(e.target.id, letter, option)
   }
 
   render() {
