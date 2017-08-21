@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import './PlainText.css';
-import META_CHARACTERS from './MetaCharacters.js';
+import replaceMetaChar from './MetaCharacters.js';
 
 export default class PlainText extends Component {
   constructor(props) {
@@ -14,16 +14,13 @@ export default class PlainText extends Component {
   }
 
   handleChangeText(e) {
-    var text = e.target.value;
-    META_CHARACTERS.forEach(meta => {
-      const metaReg = new RegExp(meta, 'g');
-      text = text.replace(metaReg, meta);
-    });
+    const text = e.target.value;
+    const regex = replaceMetaChar(text);
     this.setState({
-      regex: text,
+      regex: regex,
       text: text
     });
-    this.props.onChangedRegex(this.props.id, text);
+    this.props.onChangedRegex(this.props.id, regex);
   }
 
   render() {
