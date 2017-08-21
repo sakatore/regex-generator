@@ -38,10 +38,10 @@ export default class Anything extends Component {
   render() {
     return (
       <div className="anything-character">
-        count:
+        何文字？:
         <input type="number" onChange={this.onChangeNumber}
-          value={this.state.count} min="1" />
-        *:
+          value={this.state.count} min="1" disabled={this.state.many ? "disabled" : ""} />
+        何文字でも！:
         <input type="checkbox" onChange={this.onChangeCheckBox} />
       </div>
     )
