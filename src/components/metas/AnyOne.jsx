@@ -49,7 +49,7 @@ export default class AnyOne extends Component {
     return (
       <div className="any-one-character">
         <input
-          onChange={this.handleChangeText} placeholder="any one character"
+          onChange={this.handleChangeText} placeholder="ex) s, 0, 海"
           value={this.state.text}
         />
         <select onChange={this.handleSelectChange}>

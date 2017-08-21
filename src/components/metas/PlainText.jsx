@@ -26,7 +26,7 @@ export default class PlainText extends Component {
   render() {
     return (
       <div className="plain-text">
-        <input onChange={this.handleChangeText} placeholder="plain text" />
+        <input onChange={this.handleChangeText} placeholder="ex) Apple, オオカミ" />
       </div>
     )
   }
