@@ -85,10 +85,10 @@ export default class SelectableRegex extends Component {
   getSelectors() {
     const { items } = this.state;
     const first = (index) => {
-      return index === 0 ? <option value="^">^</option> : null;
+      return index === 0 ? <option value="^">行頭</option> : null;
     }
     const last = (index) => {
-      return index === items.length - 1 ? <option value="$">$</option> : null;
+      return index === items.length - 1 ? <option value="$">行末</option> : null;
     }
 
     const list = items.map(item => (
@@ -96,10 +96,10 @@ export default class SelectableRegex extends Component {
         <div>
           <select id={item.id} onChange={this.handleSelectChange}>
             <option value="Text">Text</option>
-            <option value="[]">[]</option>
-            <option value=".">.</option>
-            <option value="Repeat">Repeat</option>
-            <option value="|">|</option>
+            <option value="[]">どれか1文字</option>
+            <option value=".">なんでもいい</option>
+            <option value="Repeat">繰り返し文字</option>
+            <option value="|">いずれかの文字列</option>
             {first(item.id)}
             {last(item.id)}
           </select>
