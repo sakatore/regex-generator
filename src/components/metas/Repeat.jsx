@@ -41,9 +41,9 @@ export default class Repeat extends Component {
       <div className="repeat">
         <input onChange={this.handleChangeText} placeholder="one letter" />
         <select onChange={this.handleSelectChange}>
-          <option value="*">*</option>
-          <option value="+">+</option>
-          <option value="?">?</option>
+          <option value="*">0個以上の繰り返し</option>
+          <option value="+">1つ以上の繰り返し</option>
+          <option value="?">あるかないかのどちらか</option>
         </select>
       </div>
     )
