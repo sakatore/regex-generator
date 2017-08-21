@@ -73,7 +73,7 @@ export default class SelectableRegex extends Component {
       return (<AnyOne id={index} onChangedRegex={this.handleChangeRegex} />);
     case '.':
       return (<Anything id={index} onChangedRegex={this.handleChangeRegex} />);
-    case 'Repeat':
+    case '*+?':
       return (<Repeat id={index} onChangedRegex={this.handleChangeRegex} />);
     case '|':
       return (<EitherWord id={index} onChangedRegex={this.handleChangeRegex} />);
@@ -98,7 +98,7 @@ export default class SelectableRegex extends Component {
             <option value="Text">Text</option>
             <option value="[]">どれか1文字</option>
             <option value=".">なんでもいい</option>
-            <option value="Repeat">繰り返し文字</option>
+            <option value="*+?">繰り返し文字</option>
             <option value="|">いずれかの文字列</option>
             {first(item.id)}
             {last(item.id)}
