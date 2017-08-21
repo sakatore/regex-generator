@@ -39,7 +39,8 @@ export default class Anything extends Component {
     return (
       <div className="anything-character">
         count:
-        <input type="number" onChange={this.onChangeNumber} value={this.state.count} />
+        <input type="number" onChange={this.onChangeNumber}
+          value={this.state.count} min="1" />
         *:
         <input type="checkbox" onChange={this.onChangeCheckBox} />
       </div>
