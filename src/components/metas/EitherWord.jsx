@@ -7,18 +7,20 @@ export default class EitherWord extends Component {
     super(props);
     this.state = {
       regex: '',
-      words: [{id: 0, text: ''}]
+      words: [{id: 0, text: ''}, {id: 1, text: ''}],
+      group: true
     };
     this.handleChangeText = this.handleChangeText.bind(this);
     this.handleClickAddButton = this.handleClickAddButton.bind(this);
+    this.onChangeCheckBox = this.onChangeCheckBox.bind(this);
   }
 
   combineRegex(index, words) {
     const newRegex = words.length > 1
       ? words.map(word => word.text).filter(text => text !== '').join('|')
       : '';
-    console.log(newRegex)
-    this.props.onChangedRegex(this.props.id, newRegex);
+    const regex = this.state.group ? `(${newRegex})` : newRegex;
+    this.props.onChangedRegex(this.props.id, regex);
     return newRegex;
   }
 
@@ -57,6 +59,17 @@ export default class EitherWord extends Component {
     }));
   }
 
+  onChangeCheckBox(e) {
+    const { group, regex } = this.state;
+    const newGroup = group === true ? false : true;
+    const newRegex = newGroup ? `(${regex})` : regex;
+    console.log(newRegex);
+    this.setState((prevState) => ({
+      group: newGroup
+    }));
+    this.props.onChangedRegex(this.props.id, newRegex);
+  }
+
   render() {
     const wordFields = this.getWordFields();
     return (
@@ -64,6 +77,9 @@ export default class EitherWord extends Component {
         <ul>
           {wordFields}
         </ul>
+        Group:
+        <input type="checkbox" onChange={this.onChangeCheckBox}
+          checked={this.state.group ? "checked" : ""} />
         <button onClick={this.handleClickAddButton}>Add word</button>
       </div>
     )
@@ -76,4 +92,5 @@ EitherWord.propTypes = {
     id: PropTypes.numbser,
     text: PropTypes.string,
   })),
+  group: PropTypes.bool
 }
