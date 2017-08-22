@@ -2,13 +2,9 @@
   "name": "regex-generator",
   "version": "0.1.0",
   "private": true,
-  "main": "index.js",
-  "engines": {
-    "node": ">=6.3.x",
-    "npm":  ">=5.x.x"
-  },
   "dependencies": {
     "elemental": "^0.6.1",
+    "express": "^4.15.4",
     "prop-types": "^15.5.10",
     "react": "^15.6.1",
     "react-dom": "^15.6.1"
