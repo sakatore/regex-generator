@@ -1,6 +1,7 @@
 {
   "name": "regex-generator",
   "version": "0.1.0",
+  "main": "index.js",
   "engines": {
     "node": ">=6.3.x",
     "npm":  ">=5.x.x"
