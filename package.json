@@ -2,6 +2,10 @@
   "name": "regex-generator",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+  "node": ">=6.9.5",
+  "npm":  ">=5.3.0"
+  },
   "dependencies": {
     "elemental": "^0.6.1",
     "prop-types": "^15.5.10",
