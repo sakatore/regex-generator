@@ -1,10 +1,9 @@
 {
   "name": "regex-generator",
   "version": "0.1.0",
-  "private": true,
   "engines": {
-  "node": ">=6.3.x",
-  "npm":  ">=5.x.x"
+    "node": ">=6.3.x",
+    "npm":  ">=5.x.x"
   },
   "dependencies": {
     "elemental": "^0.6.1",
