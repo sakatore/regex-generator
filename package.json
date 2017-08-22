@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "elemental": "^0.6.1",
     "express": "^4.15.4",
     "prop-types": "^15.5.10",
     "react": "^15.6.1",
