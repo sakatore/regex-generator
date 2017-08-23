@@ -120,7 +120,8 @@ export default class SelectableRegex extends Component {
     return (
       <div className="selectable-regex">
         {selectors}
-        <button onClick={this.handleClickAddButton}>Add Regex</button>
+        <button className="add-regex-btn"
+          onClick={this.handleClickAddButton}>Add Regex</button>
       </div>
     );
   }
