@@ -74,7 +74,7 @@ export default class EitherWord extends Component {
     const wordFields = this.getWordFields();
     return (
       <div className="either-word">
-        <ul>
+        <ul className="word-list">
           {wordFields}
         </ul>
         Group:

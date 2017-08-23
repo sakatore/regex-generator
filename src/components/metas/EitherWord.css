@@ -1,7 +1,12 @@
 .either-word {
   background-color: #eba786;
 }
+
+.word-list {
+  padding-left: 0px;
+}
+
 .word-field {
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   list-style-type: none;
 }
