@@ -1,10 +1,16 @@
 .result {
   background-color: #a9bbcd;
   padding: 10px;
+  font-family: sans-serif;
+  font-weight: bold;
 }
 
 .field {
   margin: 10px 50px;
   font-size: 22px;
   text-align: center;
+}
+
+.field > .regex {
+  border-bottom: solid 1px #cb560b;
 }
