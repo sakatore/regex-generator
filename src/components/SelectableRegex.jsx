@@ -17,6 +17,7 @@ export default class SelectableRegex extends Component {
     this.handleChangeRegex = this.handleChangeRegex.bind(this);
     this.handleClickAddButton = this.handleClickAddButton.bind(this);
     this.getMetaCharacter = this.getMetaCharacter.bind(this);
+    this.handleClickResetButton = this.handleClickResetButton.bind(this);
   }
 
   combineRegex(index, regex, items) {
@@ -62,6 +63,14 @@ export default class SelectableRegex extends Component {
     this.setState((prevState) => ({
       items: prevState.items.concat(newItem),
     }));
+  }
+
+  handleClickResetButton() {
+    this.setState((prevState) => {
+      this.props.onChangedRegex('');
+      const items = [{ id: 0, type: 'Text', meta: '' }];
+      return { items: items, regex: '' };
+    });
   }
 
   getMetaCharacter(index) {
@@ -123,6 +132,8 @@ export default class SelectableRegex extends Component {
         {selectors}
         <button className="add-regex-btn"
           onClick={this.handleClickAddButton}>Add Regex</button>
+        <button className="reset-btn"
+          onClick={this.handleClickResetButton}>Reset</button>
       </div>
     );
   }
