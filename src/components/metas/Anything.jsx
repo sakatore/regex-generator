@@ -41,7 +41,7 @@ export default class Anything extends Component {
         何文字？:
         <input type="number" onChange={this.onChangeNumber}
           value={this.state.count} min="1" disabled={this.state.many ? "disabled" : ""} />
-        <div claasName="regex-meta-option">
+        <div className="regex-meta-option">
           何文字でも！:
           <input type="checkbox" onChange={this.onChangeCheckBox} />
         </div>
