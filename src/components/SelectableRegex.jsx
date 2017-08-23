@@ -101,7 +101,7 @@ export default class SelectableRegex extends Component {
     }
 
     const list = items.map(item => (
-      <li className="selectable-meta">
+      <li className="selectable-meta" key={`selectable_meta_${item.id}`}>
         <div>
           <select className="regex-type-selector"
             id={item.id} onChange={this.handleSelectChange}>

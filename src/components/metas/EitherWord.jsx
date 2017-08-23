@@ -42,7 +42,7 @@ export default class EitherWord extends Component {
   getWordFields() {
     const fields = this.state.words.map((word) => {
       return (
-        <li className="word-field">
+        <li className="word-field" key={`word_field_${word.id}`}>
           <input id={word.id} onChange={this.handleChangeText} value={word.text} />
         </li>
       );
