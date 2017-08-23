@@ -94,7 +94,8 @@ export default class SelectableRegex extends Component {
     const list = items.map(item => (
       <li className="selectable-meta">
         <div>
-          <select id={item.id} onChange={this.handleSelectChange}>
+          <select className="regex-type-selector"
+            id={item.id} onChange={this.handleSelectChange}>
             <option value="Text">Text</option>
             <option value="[]">どれか1文字</option>
             <option value=".">なんでもいい</option>
@@ -109,7 +110,7 @@ export default class SelectableRegex extends Component {
     ));
 
     return (
-      <ul>
+      <ul className="meta-list">
         {list}
       </ul>
     );

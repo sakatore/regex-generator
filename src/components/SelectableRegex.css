@@ -1,10 +1,18 @@
 .selectable-regex {
   background-color: #eee0a3;
+  width: 500px;
+  display: inline-block;
 }
 
 .selectable-meta {
-  margin-bottom: 20px;
   list-style-type: none;
+  display: flex;
+}
+
+.regex-type-selector {
+  margin-bottom: 10px;
+  margin-right: 50px;
+}
 
 .add-regex-btn {
   display: inline-block;
