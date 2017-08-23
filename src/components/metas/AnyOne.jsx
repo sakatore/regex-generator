@@ -60,8 +60,10 @@ export default class AnyOne extends Component {
           <option value="a-z0-9">a-z0-9</option>
           <option value="a-z0-9">A-Z0-9</option>
         </select>
-        ^:
-        <input type="checkbox" onChange={this.onChangeCheckBox} />
+        <div claasName="regex-meta-option">
+          を除く:
+          <input type="checkbox" onChange={this.onChangeCheckBox} />
+        </div>
       </div>
     )
   }
